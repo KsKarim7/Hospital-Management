@@ -85,5 +85,42 @@ const displayDoctors = (doctors) => {
     parent.appendChild(div);
   });
 };
+
+const loadDesignation = () => {
+  fetch("https://testing-8az5.onrender.com/doctor/designation/")
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach((item) => {
+        const parent = document.getElementById("drop-deg");
+        const li = document.createElement("li");
+        li.classList.add("dropdown-item");
+        li.innerText = item?.name;
+        parent.appendChild(li);
+      });
+    });
+};
+const loadSpecialization = () => {
+  fetch("https://testing-8az5.onrender.com/doctor/specialization/")
+    .then((res) => res.json())
+    .then((data) => {
+      data.forEach((item) => {
+        const parent = document.getElementById("drop-spe");
+        const li = document.createElement("li");
+        li.classList.add("dropdown-item");
+        li.innerHTML = `
+        <li onclick="loadDoctors('${item.name}')"> ${item.name}</li>
+          `;
+        parent.appendChild(li);
+      });
+    });
+};
+
+const handleSearch = () => {
+  const value = document.getElementById("search").value;
+  loadDoctors(value);
+};
+
 loadServices();
 loadDoctors();
+loadDesignation();
+loadSpecialization();
