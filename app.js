@@ -63,24 +63,24 @@ const displayDoctors = (doctors) => {
     const div = document.createElement("div");
     div.classList.add("doc-card");
     div.innerHTML = `
-    <img class="doc-img" src=${doctor.image} alt="" />
-    <h4>${doctor?.full_name}</h4>
-    <h6>${doctor?.designation[0]}</h6>
-    <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
-    numquam!
-    </p>
-    
-    <p>
-    
-    ${doctor?.specialization?.map((item) => {
+        <img class="doc-img" src=${doctor.image} alt="" />
+              <h4>${doctor?.full_name}</h4>
+              <h6>${doctor?.designation[0]}</h6>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
+                numquam!
+              </p>
+             
+              <p>
+              
+              ${doctor?.specialization?.map((item) => {
       return `<button>${item}</button>`;
     })}
-    </p>
-    
-    <button > <a target="_blank" href="docDetails.html?doctorId=${doctor.id
+              </p>
+
+              <button > <a target="_blank" href="docDetails.html?doctorId=${doctor.id
       }">Details</a> </button>
-    `;
+        `;
 
     parent.appendChild(div);
   });
@@ -120,7 +120,31 @@ const handleSearch = () => {
   loadDoctors(value);
 };
 
+const loadReview = () => {
+  fetch("https://testing-8az5.onrender.com/doctor/review/")
+    .then((res) => res.json())
+    .then((data) => displayReview(data));
+};
+
+const displayReview = (reviews) => {
+  reviews.forEach((review) => {
+    const parent = document.getElementById("review-container");
+    const div = document.createElement("div");
+    div.classList.add("review-card");
+    div.innerHTML = `
+        <img src="./Images/girl.png" alt="" />
+            <h4>${review.reviewer}</h4>
+            <p>
+             ${review.body.slice(0, 100)}
+            </p>
+            <h6>${review.rating}</h6>
+        `;
+    parent.appendChild(div);
+  });
+};
+
 loadServices();
 loadDoctors();
 loadDesignation();
 loadSpecialization();
+loadReview();
