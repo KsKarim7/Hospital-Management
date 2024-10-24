@@ -49,7 +49,6 @@ const displayDetails = (doctor) => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quibusdam
           quis excepturi tempore. Eius, qui!
       </p>
-  
       <h4>Fees: ${doctor.fee} BDT</h4>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Take Appointment
