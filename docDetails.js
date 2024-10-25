@@ -93,7 +93,7 @@ const handleAppointment = () => {
     doctor: param,
   };
 
-  console.log(info);
+  // console.log(info);
   fetch("https://testing-8az5.onrender.com/appointment/", {
     method: "POST",
     headers: { "content-type": "application/json" },
