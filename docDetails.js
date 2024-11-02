@@ -102,8 +102,6 @@ const handleAppointment = () => {
     .then((res) => res.json())
     .then((data) => {
       window.location.href = `pdf.html?doctorId=${param}`;
-      // handlePdf();
-      // console.log(data);
     });
 };
 
